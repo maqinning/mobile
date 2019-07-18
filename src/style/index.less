@@ -1,0 +1,42 @@
+@import './valiable.less';
+
+* {
+  font-family: MicrosoftYaHei;
+  white-space: normal;
+}
+// 公共导航
+.toutiao-nav-bar {
+  background-color:@blueColor;
+  width:100%;
+  .van-nav-bar__title,.van-nav-bar__text,.van-icon {
+    color:@whiteColor;
+  }
+}
+.text-left {
+  text-align: left;
+}
+// 公共分割
+.split {
+  height:10px;
+  background-color:@hoveColor;
+
+}
+.van-tab--active {
+  .van-ellipsis {
+    color:@blueColor;
+  }
+}
+.background {
+  background-color:@hoveColor;
+  width: 100%;
+  z-index: 9999;
+}
+.blueBack {
+  background-color:@blueColor
+}
+#app,body,html {
+  width:100%;
+  height:100%;
+  overflow-x: hidden;
+  background-color:@hoveColor;
+}

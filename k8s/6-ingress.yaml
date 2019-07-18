@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0" # 设置client_max_body_size为0
+  namespace: heimaqianduan-python
+spec:
+  rules:
+  - host: toutiao.research.itcast.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-service
+          servicePort: 80

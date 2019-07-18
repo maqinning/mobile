@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: web
+  namespace: heimaqianduan-python
+spec:
+  selector:
+    matchLabels:
+      app: web
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - image: $DOCKER_REGISTRY_SERVER/$DOCKER_REGISTRY_SERVER_PROJECT/$CI_PROJECT_NAME:$CI_PIPELINE_ID # CI集成时自动替换
+          imagePullPolicy: IfNotPresent
+          name: web
+          # env:
+          #   - name: BASE_API
+          #     value: /api
+          livenessProbe:
+            tcpSocket:
+              port: 80
+          ports:
+            - containerPort: 80
+              name: http
+      #     volumeMounts:
+      #       - name: nfs-web-pvc
+      #         mountPath: /usr/share/nginx/html
+      # volumes:
+      #   - name: nfs-web-pvc
+      #     persistentVolumeClaim:
+      #       claimName: web-pvc
